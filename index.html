@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <h1>
+                 Expenses Tracker
+        </h1>
+        <div class="container">
+            <input type="number" id="inputvala">
+            <div class="box"><span>Total : </span>
+                <p id="total"></p>
+            </div>
+            <div class="box"><span>Spent : </span>
+                <p id="spent"></p>
+            </div>
+            <div class="box"><span>Remaining : </span>
+                <p id="remaining"></p>
+            </div>
+        </div>
+
+        <div class="additional">
+            <input type="text" placeholder="Item's Name" id="item">
+            <input type="number" placeholder="Amount Spent" id="amtSpnt">
+            <button onclick="add()">Add</button>
+        </div>
+
+
+        <div class="table">
+            <table id="table_box">
+                <tr>
+                    <th>S.No</th>
+                    <th>Info</th>
+                    <th>Amount</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script>
+
+        let target = document.getElementById("inputvala")
+        let item = document.getElementById("item")
+        let div1 = document.getElementById("total")
+        let div2 = document.getElementById("spent")
+        let div3 = document.getElementById("remaining")
+        let addNewValue = document.getElementById("amtSpnt")
+        let tableBox = document.getElementById("table_box")
+        let x = 0
+
+        function add() {
+            div1.innerHTML = target.value
+            div2.innerHTML = addNewValue.value + div2.innerHTML
+            div3.innerHTML = div1.innerHTML - div2.innerHTML
+
+
+            let tbrow = document.createElement('tr')
+            let td1 = document.createElement('td')
+            td1.innerHTML = ++x;
+            tbrow.append(td1)
+            
+            let td2 = document.createElement('td')
+            td2.innerHTML = item.value;
+            tbrow.append(td2)
+
+
+            let td3 = document.createElement('td')
+            td3.innerHTML = addNewValue.value;
+            tbrow.append(td3)
+
+            tableBox.append(tbrow)
+
+
+
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
